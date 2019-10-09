@@ -1,0 +1,32 @@
+name: game_without_name
+description: This game is part of my Bachelor's Thesis.
+version: 0.2.0+1
+author: Honza Bittner <git@tenhobi.dev>
+repository: https://github.com/tenhobi/game-without-name
+issue_tracker: https://github.com/tenhobi/game-without-name/issues
+homepage: https://github.com/tenhobi/game-without-name
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  equatable: ^1.0.1
+  bloc: ^2.0.0
+  flutter_bloc: ^2.1.1
+  dartz: ^0.8.9
+  meta: ^1.1.8
+  # cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: ^4.1.1
+  effective_dart: ^1.1.1
+
+flutter:
+  uses-material-design: true
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+  # https://flutter.dev/assets-and-images/#from-packages
+  # see https://flutter.dev/custom-fonts/#from-packages
