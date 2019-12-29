@@ -1,32 +1,47 @@
-name: game_without_name
+name: totally_not_chernobyl
 description: This game is part of my Bachelor's Thesis.
-version: 0.2.0+1
+version: 0.3.0+1
 author: Honza Bittner <git@tenhobi.dev>
-repository: https://github.com/tenhobi/game-without-name
-issue_tracker: https://github.com/tenhobi/game-without-name/issues
-homepage: https://github.com/tenhobi/game-without-name
+repository: https://github.com/tenhobi/totally-not-chernobyl
+issue_tracker: https://github.com/tenhobi/totally-not-chernobyl/issues
+homepage: https://github.com/tenhobi/totally-not-chernobyl
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
+  audioplayers: ^0.13.5
+  # bezier_chart: ^1.0.15
+  bloc: ^3.0.0
+  cloud_firestore: ^0.13.0+1
+  dartz: ^0.8.9
+  equatable: ^1.0.1
+  # fast_qr_reader_view: ^0.1.5
+  firebase_auth: ^0.15.3
   flutter:
     sdk: flutter
-  equatable: ^1.0.1
-  bloc: ^2.0.0
-  flutter_bloc: ^2.1.1
-  dartz: ^0.8.9
+  flutter_bloc: ^3.0.0
+  # flutter_compass: ^0.3.4
+  flutter_launcher_icons: ^0.7.4
+  get_it: ^3.1.0
+  google_fonts: ^0.2.0
+  google_sign_in: ^4.1.1
   meta: ^1.1.8
-  # cupertino_icons: ^0.1.2
+  # qr_flutter: ^3.1.0
+  sensors: ^0.4.1+5
+  share: ^0.6.3+5
+  super_enum: ^0.2.0
+  # uuid: ^2.0.4
+  vibrate: ^0.0.4
 
 dev_dependencies:
+  effective_dart: ^1.1.2
   flutter_test:
     sdk: flutter
   mockito: ^4.1.1
-  effective_dart: ^1.1.1
+  super_enum_generator: ^0.2.0+1
 
 flutter:
   uses-material-design: true
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-  # https://flutter.dev/assets-and-images/#from-packages
-  # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/

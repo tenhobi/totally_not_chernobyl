@@ -1,4 +1,4 @@
-package dev.tenhobi.game_without_name
+package dev.tenhobi.totally_not_chernobyl
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

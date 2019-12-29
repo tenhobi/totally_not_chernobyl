@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'injection.dart' as di;
+
 ///
 final MyApp myApp = MyApp();
 
-void main() => runApp(myApp);
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
+  runApp(myApp);
+}
 
 ///
 class MyApp extends StatelessWidget {

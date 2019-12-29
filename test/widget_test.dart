@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:game_without_name/main.dart' as main_file;
+import 'package:totally_not_chernobyl/main.dart' as main_file;
 
 void main() {
   testWidgets('app run smoke test', (WidgetTester tester) async {
-    main_file.main();
+    await main_file.main();
     expect(find.byWidget(main_file.myApp), findsOneWidget);
   });
 
