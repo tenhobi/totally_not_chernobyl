@@ -11,9 +11,7 @@ This game is created as part of my [Bachelor's Thesis](https://github.com/tenhob
 
 It uses [Flutter](https://flutter.dev) framework by Google, [Cloud Firestore](https://firebase.google.com/products/firestore/) for communication and [Rive](https://rive.app) for some special effects.
 
-The code follows the [Clean Architecture].
-
-_Note:_ more information will be added during the development.
+The code follows the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
 ## 🚀 How to start
 
