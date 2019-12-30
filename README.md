@@ -37,11 +37,11 @@ Run the app using the `flutter run` command.
 
 To learn more, read about building and releasing [an Android app](https://flutter.dev/docs/deployment/android) or [an iOS app](https://flutter.dev/docs/deployment/ios).
 
-### Tools
+## 🔨 Tools
 
 This section contains some more tools that might help you enhance your development experience.
 
-#### [scrcpy](https://github.com/Genymobile/scrcpy)
+### [scrcpy](https://github.com/Genymobile/scrcpy)
 
 This tool is useful for providing display and control of Android devices.
 
