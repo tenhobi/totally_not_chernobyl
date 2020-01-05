@@ -46,13 +46,16 @@ This tool is useful for providing display and control of Android devices.
 After connecting a phone with a USB, run:
 
 ```bash
-scrcpy --window-title 'Totally Not Chernobyl' --always-on-top
+scrcpy --window-title "Totally Not Chernobyl" --always-on-top
 ```
 
 or for [wireless use](https://github.com/Genymobile/scrcpy#wireless), run:
 
 ```bash
-scrcpy --window-title 'Totally Not Chernobyl' --always-on-top --bit-rate 2M --max-size 800
+adb tcpip 5555
+adb connect DEVICE_IP:5555
+# then you can unplug
+scrcpy --window-title "Totally Not Chernobyl" --always-on-top --bit-rate 2M --max-size 800
 ```
 
 In WSL2, run with `cmd.exe /c [command]`.
