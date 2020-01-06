@@ -1,7 +1,7 @@
 # Totally Not Chernobyl
 
-[![Actions status](https://github.com/tenhobi/totally-not-chernobyl/workflows/CI/badge.svg)](https://github.com/tenhobi/totally-not-chernobyl/actions)
-[![codecov](https://codecov.io/gh/tenhobi/totally-not-chernobyl/branch/master/graph/badge.svg?token=WULJnl23VB)](https://codecov.io/gh/tenhobi/totally-not-chernobyl)
+[![Actions status](https://github.com/tenhobi/totally_not_chernobyl/workflows/CI/badge.svg)](https://github.com/tenhobi/totally_not_chernobyl/actions)
+[![codecov](https://codecov.io/gh/tenhobi/totally_not_chernobyl/branch/master/graph/badge.svg?token=WULJnl23VB)](https://codecov.io/gh/tenhobi/totally_not_chernobyl)
 [![style: effective dart](https://img.shields.io/badge/style-effective_dart-40c4ff.svg)](https://github.com/tenhobi/effective_dart)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
