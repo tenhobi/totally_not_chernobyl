@@ -1,5 +1,6 @@
 coverage/
 android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
 
 # Created by https://www.gitignore.io/api/dart,flutter,jetbrains+all,code
 # Edit at https://www.gitignore.io/?templates=dart,flutter,jetbrains+all,code

@@ -7,7 +7,8 @@
 
 ## ✨ About
 
-This game is created as part of my [Bachelor's Thesis](https://github.com/tenhobi/bachelors-thesis) in the Czech language. Due to that, I will not accept any PRs for now.
+This game is created as part of my [Bachelor's Thesis](https://github.com/tenhobi/bachelors-thesis) in the Czech language.
+Due to that, I will not accept any PRs for now.
 
 It uses [Flutter](https://flutter.dev) framework by Google, [Cloud Firestore](https://firebase.google.com/products/firestore/) for communication and [Rive](https://rive.app) for some special effects.
 
@@ -25,9 +26,12 @@ Following steps will tell you what to install and point you to useful resources:
 1. Install [Android Studio](https://developer.android.com/studio) for Android and [Xcode](https://developer.apple.com/xcode/) for iOS.
 1. *If required, set up an Android or iOS emulator.*
 
+### Set Up
+
 Also, before building the app, make sure to:
 
-- Add `android/app/google-services.json` file, provided by Firebase.
+- Add `android/app/google-services.json` file for Android, provided by Firebase.
+- Add `ios/Runner/GoogleService-info.plist` file for iOS, provided by Firebase.
 
 ### Running
 

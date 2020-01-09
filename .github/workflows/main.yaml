@@ -26,12 +26,12 @@ jobs:
         with:
           token: ${{secrets.CODECOV_TOKEN}}
           file: coverage/lcov.info
-      #      - name: Build Android app
-      #        run: flutter build apk
-      - name: Semver Release
-        uses: K-Phoen/semver-release-action@v1.0.3
-        if: success() && github.event_name == 'pull_request'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_branch: master
+#      - name: Build Android app
+#        run: flutter build apk
+#      - name: Semver Release
+#        uses: K-Phoen/semver-release-action@v1.0.3
+#        if: success() && github.event_name == 'pull_request'
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        with:
+#          release_branch: master
