@@ -3,9 +3,30 @@ name: CI
 on: [push]
 
 jobs:
-  # Analyze and test each package. aaa
+  # Set up Flutter for all other tasks.
+  setup:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v1
+        with:
+          path: /opt/hostedtoolcache/flutter
+          key: ${{ runner.os }}-flutter
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+
+  # Analyze and test.
   analyze-and-test:
     runs-on: ${{ matrix.os }}
+    needs: setup
 
     strategy:
       matrix:
@@ -23,24 +44,41 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - name: Cache Flutter Packages
-        id: cache-flutter-packages
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.FLUTTER_HOME }}/.pub-cache
-          key: ${{ runner.os }}-flutter-packages-${{ hashFiles('pubspec.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-flutter-packages-
-      - name: Get Flutter Packages
-        if: steps.cache-flutter-packages.outputs.cache-hit != 'true'
-        run: |
-          flutter pub get
       - name: Analyze and Test
         run: |
-          chmod +x ./tool/ci.sh
+          # chmod +x ./tool/ci.sh
           ./tool/ci.sh
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage/lcov.info
+  #
+  # Build mobile apps.
+  # build:
+  #   runs-on: ${{ matrix.os }}
+  #   needs: analyze-and-test
+  #   strategy:
+  #     matrix:
+  #       os: [ubuntu-latest, macos-latest]
+  #     fail-fast: false
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - name: Cache Flutter
+  #       id: cache-flutter
+  #       uses: actions/cache@v1
+  #       with:
+  #         path: /opt/hostedtoolcache/flutter
+  #         key: ${{ runner.os }}-flutter
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: 'stable'
+  #     - name: Build Android
+  #       run: |
+  #         chmod +x ./tool/build.sh
+  #         ./tool/build.sh apk
+  #     - name: Build iOS
+  #       if: ${{ runner.os }} == 'macOS'
+  #       run: |
+  #         chmod +x ./tool/build.sh
+  #         ./tool/build.sh ios
