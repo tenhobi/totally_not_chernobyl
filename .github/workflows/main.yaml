@@ -10,6 +10,11 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            flutter_path: /opt/hostedtoolcache/flutter
+          - os: macos-latest
+            flutter_path: /Users/runner/hostedtoolcache/flutter
       fail-fast: false
 
     steps:
@@ -17,46 +22,52 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      # - name: Cache Flutter dependencies
-      #   uses: actions/cache@v1
-      #   with:
-      #     path: /opt/hostedtoolcache/flutter
-      #     key: ${{ runner.os }}-flutter-z
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v1
+        with:
+          path: ${{ matrix.flutter_path }}
+          key: ${{ runner.os }}-flutter-abc
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - run: which flutter
-  # # Analyze and test.
-  # analyze-and-test:
-  #   runs-on: ${{ matrix.os }}
-  #   needs: setup
-  #   strategy:
-  #     matrix:
-  #       os: [ubuntu-latest, macos-latest]
-  #     fail-fast: false
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - uses: actions/setup-java@v1
-  #       with:
-  #         java-version: '12.x'
-  #     #- run: chmod +rwx /opt/hostedtoolcache
-  #     - name: Cache Flutter
-  #       id: cache-flutter
-  #       uses: actions/cache@v1
-  #       with:
-  #         path: /opt/hostedtoolcache/flutter
-  #         key: ${{ runner.os }}-flutter-z
-  #     - uses: subosito/flutter-action@v1
-  #       with:
-  #         channel: 'stable'
-  #     - name: Analyze and Test
-  #       run: |
-  #         ./tool/ci.sh
-  #     - name: Upload coverage to Codecov
-  #       uses: codecov/codecov-action@v1
-  #       with:
-  #         token: ${{ secrets.CODECOV_TOKEN }}
-  #         file: coverage/lcov.info
+
+  # Analyze and test.
+  analyze-and-test:
+    runs-on: ${{ matrix.os }}
+    needs: setup
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        include:
+          - os: ubuntu-latest
+            flutter_path: /opt/hostedtoolcache/flutter
+          - os: macos-latest
+            flutter_path: /Users/runner/hostedtoolcache/flutter
+      fail-fast: false
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - name: Cache Flutter
+        id: cache-flutter
+        uses: actions/cache@v1
+        with:
+          path: ${{ matrix.flutter_path }}
+          key: ${{ runner.os }}-flutter-abc
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: 'stable'
+      - name: Analyze and Test
+        run: |
+          ./tool/ci.sh
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: coverage/lcov.info
   #
   # Build mobile apps.
   # build:
