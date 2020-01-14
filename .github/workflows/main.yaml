@@ -17,49 +17,46 @@ jobs:
       - uses: actions/setup-java@v1
         with:
           java-version: '12.x'
-      - run: chmod +rwx /opt/hostedtoolcache
-      - name: Cache Flutter dependencies
-        uses: actions/cache@v1
-        with:
-          path: /opt/hostedtoolcache/flutter
-          key: ${{ runner.os }}-flutter-z
+      # - name: Cache Flutter dependencies
+      #   uses: actions/cache@v1
+      #   with:
+      #     path: /opt/hostedtoolcache/flutter
+      #     key: ${{ runner.os }}-flutter-z
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-
-  # Analyze and test.
-  analyze-and-test:
-    runs-on: ${{ matrix.os }}
-    needs: setup
-
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-      fail-fast: false
-
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
-        with:
-          java-version: '12.x'
-      - run: chmod +rwx /opt/hostedtoolcache
-      - name: Cache Flutter
-        id: cache-flutter
-        uses: actions/cache@v1
-        with:
-          path: /opt/hostedtoolcache/flutter
-          key: ${{ runner.os }}-flutter-z
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
-      - name: Analyze and Test
-        run: |
-          ./tool/ci.sh
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: coverage/lcov.info
+      - run: which flutter
+  # # Analyze and test.
+  # analyze-and-test:
+  #   runs-on: ${{ matrix.os }}
+  #   needs: setup
+  #   strategy:
+  #     matrix:
+  #       os: [ubuntu-latest, macos-latest]
+  #     fail-fast: false
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - uses: actions/setup-java@v1
+  #       with:
+  #         java-version: '12.x'
+  #     #- run: chmod +rwx /opt/hostedtoolcache
+  #     - name: Cache Flutter
+  #       id: cache-flutter
+  #       uses: actions/cache@v1
+  #       with:
+  #         path: /opt/hostedtoolcache/flutter
+  #         key: ${{ runner.os }}-flutter-z
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: 'stable'
+  #     - name: Analyze and Test
+  #       run: |
+  #         ./tool/ci.sh
+  #     - name: Upload coverage to Codecov
+  #       uses: codecov/codecov-action@v1
+  #       with:
+  #         token: ${{ secrets.CODECOV_TOKEN }}
+  #         file: coverage/lcov.info
   #
   # Build mobile apps.
   # build:
