@@ -18,7 +18,7 @@ jobs:
         uses: actions/cache@v1
         with:
           path: /opt/hostedtoolcache/flutter
-          key: ${{ runner.os }}-flutter
+          key: ${{ runner.os }}-flutter-x
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
@@ -46,7 +46,6 @@ jobs:
           channel: 'stable'
       - name: Analyze and Test
         run: |
-          # chmod +x ./tool/ci.sh
           ./tool/ci.sh
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
@@ -75,10 +74,8 @@ jobs:
   #         channel: 'stable'
   #     - name: Build Android
   #       run: |
-  #         chmod +x ./tool/build.sh
   #         ./tool/build.sh apk
   #     - name: Build iOS
   #       if: ${{ runner.os }} == 'macOS'
   #       run: |
-  #         chmod +x ./tool/build.sh
   #         ./tool/build.sh ios

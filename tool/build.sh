@@ -7,4 +7,4 @@ set -o errexit # exit script when command fails
 set -o nounset # exit script when it tries to use undeclared variables
 set -o xtrace # traces commands before executing them
 
-flutter build $1
+flutter build --$1
