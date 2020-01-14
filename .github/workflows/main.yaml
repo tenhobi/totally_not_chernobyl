@@ -3,28 +3,6 @@ name: CI
 on: [push]
 
 jobs:
-  # # Set up Flutter for all other tasks.
-  # setup:
-  #   runs-on: ${{ matrix.os }}
-
-  #   strategy:
-  #     matrix:
-  #       os: [ubuntu-latest, macos-latest]
-  #     fail-fast: false
-
-  #   steps:
-  #     - uses: actions/checkout@v1
-  #     - run: |
-  #         echo $FLUTTER_HOME
-  #     - name: Cache Flutter dependencies
-  #       uses: actions/cache@v1
-  #       with:
-  #         path: /opt/hostedtoolcache/flutter
-  #         key: ${{ runner.os }}-flutter
-  #     - uses: subosito/flutter-action@v1
-  #       with:
-  #         channel: 'stable'
-
   # Analyze and test each package.
   analyze-and-test:
     runs-on: ${{ matrix.os }}
@@ -32,7 +10,6 @@ jobs:
 
     strategy:
       matrix:
-        #test: ['a', 'b']
         os: [ubuntu-latest, macos-latest]
       fail-fast: false
 
