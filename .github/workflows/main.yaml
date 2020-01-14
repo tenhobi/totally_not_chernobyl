@@ -3,7 +3,7 @@ name: CI
 on: [push]
 
 jobs:
-  # Set up Flutter for all other tasks.
+  # Set up Flutter for all other tasks. a
   setup:
     runs-on: ${{ matrix.os }}
 
