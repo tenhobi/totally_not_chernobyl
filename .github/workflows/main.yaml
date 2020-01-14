@@ -3,27 +3,27 @@ name: CI
 on: [push]
 
 jobs:
-  # Set up Flutter for all other tasks.
-  setup:
-    runs-on: ${{ matrix.os }}
+  # # Set up Flutter for all other tasks.
+  # setup:
+  #   runs-on: ${{ matrix.os }}
 
-    strategy:
-      matrix:
-        os: [ubuntu-latest, macos-latest]
-      fail-fast: false
+  #   strategy:
+  #     matrix:
+  #       os: [ubuntu-latest, macos-latest]
+  #     fail-fast: false
 
-    steps:
-      - uses: actions/checkout@v1
-      - run: |
-          echo $FLUTTER_HOME
-      - name: Cache Flutter dependencies
-        uses: actions/cache@v1
-        with:
-          path: /opt/hostedtoolcache/flutter
-          key: ${{ runner.os }}-flutter
-      - uses: subosito/flutter-action@v1
-        with:
-          channel: 'stable'
+  #   steps:
+  #     - uses: actions/checkout@v1
+  #     - run: |
+  #         echo $FLUTTER_HOME
+  #     - name: Cache Flutter dependencies
+  #       uses: actions/cache@v1
+  #       with:
+  #         path: /opt/hostedtoolcache/flutter
+  #         key: ${{ runner.os }}-flutter
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: 'stable'
 
   # Analyze and test each package.
   analyze-and-test:
@@ -32,12 +32,14 @@ jobs:
 
     strategy:
       matrix:
+        #test: ['a', 'b']
         os: [ubuntu-latest, macos-latest]
       fail-fast: false
 
     steps:
       - uses: actions/checkout@v1
-      - name: Cache Flutter dependencies
+      - name: Cache Flutter
+        id: cache-flutter
         uses: actions/cache@v1
         with:
           path: /opt/hostedtoolcache/flutter
@@ -45,8 +47,22 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-      - name: Analyze and test
+      - name: Cache Flutter Packages
+        id: cache-flutter-packages
+        uses: actions/cache@v1
+        with:
+          path: ~/.pub-cache
+          key: ${{ runner.os }}-flutter-packages-${{ hashFiles('pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-packages-
+      - name: Get Flutter Packages
+        if: steps.cache-flutter-packages.outputs.cache-hit != 'true'
         run: |
+          flutter packages get
+      - name: Analyze and Test
+        if: always()
+        run: |
+          chmod +x ./tool/ci.sh
           ./tool/ci.sh
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
