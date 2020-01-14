@@ -31,7 +31,7 @@ dependencies:
   sensors: ^0.4.1+6
   share: ^0.6.3+5
   super_enum: ^0.2.0
-  # uuid: ^2.0.4
+  uuid: ^2.0.4
   vibrate: ^0.0.4
 
 dev_dependencies:

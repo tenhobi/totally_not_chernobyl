@@ -34,7 +34,7 @@ jobs:
       - name: Get Flutter Packages
         if: steps.cache-flutter-packages.outputs.cache-hit != 'true'
         run: |
-          flutter packages get
+          flutter pub get
       - name: Analyze and Test
         if: always()
         run: |
