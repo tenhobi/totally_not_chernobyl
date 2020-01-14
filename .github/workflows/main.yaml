@@ -36,7 +36,6 @@ jobs:
         run: |
           flutter pub get
       - name: Analyze and Test
-        if: always()
         run: |
           chmod +x ./tool/ci.sh
           ./tool/ci.sh
