@@ -45,7 +45,7 @@ jobs:
           channel: 'stable'
       - name: Analyze and test
         run: |
-          ./scripts/ci.sh
+          ./tool/ci.sh
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
