@@ -10,38 +10,38 @@ environment:
   sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
-  app_review: ^1.0.0
-  audioplayers: ^0.13.6
+  app_review: ^1.0.1
+  audioplayers: ^0.13.7
   # bezier_chart: ^1.0.15
   bloc: ^3.0.0
   cloud_firestore: ^0.13.0+1
   dartz: ^0.8.9
   equatable: ^1.0.2
   # fast_qr_reader_view: ^0.1.5
-  firebase_auth: ^0.15.3
+  firebase_auth: ^0.15.3+1
   flutter:
     sdk: flutter
   flutter_bloc: ^3.1.0
   # flutter_compass: ^0.3.4
   get_it: ^3.1.0
-  google_fonts: ^0.2.0
+  google_fonts: ^0.3.2
   google_sign_in: ^4.1.1
   meta: ^1.1.8
   # qr_flutter: ^3.1.0
-  sensors: ^0.4.1+6
+  sensors: ^0.4.1+7
   share: ^0.6.3+5
-  super_enum: ^0.2.0
+  super_enum: ^0.3.0
   uuid: ^2.0.4
   vibrate: ^0.0.4
 
 dev_dependencies:
-  effective_dart: ^1.1.2
+  effective_dart: ^1.2.1
   flutter_test:
     sdk: flutter
   flutter_launcher_icons: ^0.7.4
   flutter_native_splash: ^0.1.9
   mockito: ^4.1.1
-  super_enum_generator: ^0.2.0+1
+  super_enum_generator: ^0.3.0
 
 flutter:
   uses-material-design: true
