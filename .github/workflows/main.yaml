@@ -1,6 +1,10 @@
-name: CI
+name: Build
 
 on: [push]
+
+env:
+  flutter_channel: 'stable'
+  flutter_version: '1.12.13+hotfix.5' # without 'v'
 
 jobs:
   # Set up Flutter for all other tasks.
@@ -18,15 +22,20 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+
       - name: Cache Flutter dependencies
         uses: actions/cache@v1
         with:
           path: ${{ matrix.flutter_path }}
-          key: ${{ runner.os }}-flutter
+          key: ${{ runner.OS }}-flutter-cache-${{ env.flutter_version }}
+          restore-keys: |
+            ${{ runner.OS }}-flutter-cache-
+
       - uses: subosito/flutter-action@v1
         with:
-          channel: 'stable'
+          channel: ${{ env.flutter_channel }}
+          flutter-version: ${{ env.flutter_version }}
 
   # Analyze and test.
   analyze-and-test:
@@ -44,19 +53,25 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v1
-      - name: Cache Flutter
-        id: cache-flutter
+      - uses: actions/checkout@v2
+
+      - name: Cache Flutter dependencies
         uses: actions/cache@v1
         with:
           path: ${{ matrix.flutter_path }}
-          key: ${{ runner.os }}-flutter
+          key: ${{ runner.OS }}-flutter-cache-${{ env.flutter_version }}
+          restore-keys: |
+            ${{ runner.OS }}-flutter-cache-
+
       - uses: subosito/flutter-action@v1
         with:
-          channel: 'stable'
+          channel: ${{ env.flutter_channel }}
+          flutter-version: ${{ env.flutter_version }}
+
       - name: Analyze and Test
         run: |
           ./tool/ci.sh
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         with:
