@@ -8,9 +8,9 @@ final MyApp myApp = MyApp();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setEnabledSystemUIOverlays([]);
-  await SystemChrome.setPreferredOrientations(
-    [DeviceOrientation.portraitDown, DeviceOrientation.portraitUp],
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
   );
 
   await di.init();
