@@ -1,9 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'injection.dart' as di;
 
 ///
 final MyApp myApp = MyApp();
 
-void main() => runApp(myApp);
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIOverlays([]);
+  SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown],
+  );
+
+  await di.init();
+  runApp(myApp);
+}
 
 ///
 class MyApp extends StatelessWidget {

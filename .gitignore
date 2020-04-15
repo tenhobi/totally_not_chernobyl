@@ -1,7 +1,16 @@
 coverage/
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
 
-# Created by https://www.gitignore.io/api/dart,flutter,jetbrains+all
-# Edit at https://www.gitignore.io/?templates=dart,flutter,jetbrains+all
+# Created by https://www.gitignore.io/api/dart,flutter,jetbrains+all,code
+# Edit at https://www.gitignore.io/?templates=dart,flutter,jetbrains+all,code
+
+### Code ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 ### Dart ###
 # See https://www.dartlang.org/guides/libraries/private-files
@@ -11,7 +20,7 @@ coverage/
 .packages
 build/
 # If you're building an application, you may want to check-in your pubspec.lock
-#pubspec.lock
+# pubspec.lock
 
 # Directory created by dartdoc
 # If you don't generate documentation locally you can remove this line.
@@ -30,6 +39,7 @@ doc/api/
 # Flutter/Dart/Pub related
 **/doc/api/
 .flutter-plugins
+.flutter-plugins-dependencies
 .pub-cache/
 .pub/
 
@@ -161,4 +171,4 @@ modules.xml
 # Sonarlint plugin
 .idea/sonarlint
 
-# End of https://www.gitignore.io/api/dart,flutter,jetbrains+all
+# End of https://www.gitignore.io/api/dart,flutter,jetbrains+all,code

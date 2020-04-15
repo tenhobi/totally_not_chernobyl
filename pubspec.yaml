@@ -1,32 +1,59 @@
-name: game_without_name
+name: totally_not_chernobyl
 description: This game is part of my Bachelor's Thesis.
-version: 0.2.0+1
+version: 0.4.0+1
 author: Honza Bittner <git@tenhobi.dev>
-repository: https://github.com/tenhobi/game-without-name
-issue_tracker: https://github.com/tenhobi/game-without-name/issues
-homepage: https://github.com/tenhobi/game-without-name
+repository: https://github.com/tenhobi/totally-not-chernobyl
+issue_tracker: https://github.com/tenhobi/totally-not-chernobyl/issues
+homepage: https://github.com/tenhobi/totally-not-chernobyl
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: '>=2.7.0 <3.0.0'
 
 dependencies:
+  audioplayers: ^0.15.1
+  bloc: ^3.0.0
+  cloud_firestore: ^0.13.5
+  dartz: ^0.8.9
+  equatable: ^1.1.1
+  firebase_auth: ^0.16.0
   flutter:
     sdk: flutter
-  equatable: ^1.0.1
-  bloc: ^2.0.0
-  flutter_bloc: ^2.1.1
-  dartz: ^0.8.9
+  flutter_bloc: ^3.2.0
+  get_it: ^4.0.1
+  google_fonts: ^0.5.0
+  google_sign_in: ^4.4.1
   meta: ^1.1.8
-  # cupertino_icons: ^0.1.2
+  sensors: ^0.4.1+10
+  share: ^0.6.3+6
+  freezed_annotation: ^0.7.1
+  uuid: ^2.0.4
+  vibrate: ^0.0.4
 
 dev_dependencies:
+  effective_dart: ^1.2.1
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.7.4
+  flutter_native_splash: ^0.1.9
   mockito: ^4.1.1
-  effective_dart: ^1.1.1
+  build_runner: ^1.8.1
+  freezed: ^0.10.6
 
 flutter:
   uses-material-design: true
-  # https://flutter.dev/assets-and-images/#resolution-aware.
-  # https://flutter.dev/assets-and-images/#from-packages
-  # see https://flutter.dev/custom-fonts/#from-packages
+  assets:
+    - assets/
+
+# flutter pub run flutter_launcher_icons:main
+# https://github.com/fluttercommunity/flutter_launcher_icons#mag-attributes
+#flutter_icons:
+#  android: 'launcher_icon'
+#  ios: true
+#  image_path: 'assets/images/icon.png'
+
+# flutter pub run flutter_native_splash:create
+# https://github.com/henriquearthur/flutter_native_splash
+flutter_native_splash:
+  #  image: 'assets/images/splash.png'
+  color: '42a5f5'
+  fill: true

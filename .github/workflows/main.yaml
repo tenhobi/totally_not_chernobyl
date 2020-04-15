@@ -1,37 +1,75 @@
-name: CI
+name: Build
 
-on:
-  push:
-  pull_request:
-    types: [closed]
+on: [push]
+
+env:
+  flutter_channel: 'stable'
+  flutter_version: '1.12.13+hotfix.9'
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  # Analyze and test each package.
+  analyze-and-test:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        include:
+          - os: ubuntu-latest
+            flutter_path: /opt/hostedtoolcache/flutter
+      fail-fast: false
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-java@v1
+      - uses: actions/checkout@v2
+
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v1
         with:
-          java-version: "12.x"
+          path: ${{ matrix.flutter_path }}
+          key: ${{ runner.OS }}-flutter-cache-${{ env.flutter_version }}
+          restore-keys: |
+            ${{ runner.OS }}-flutter-cache-
+
       - uses: subosito/flutter-action@v1
         with:
-          channel: "stable" # or: 'dev' or 'beta'
-      - name: Download Flutter dependencies
-        run: flutter pub get
-      - name: Run Flutter tests with coverage
-        run: flutter test --coverage
+          channel: ${{ env.flutter_channel }}
+          flutter-version: ${{ env.flutter_version }}
+
+      - name: Analyze and Test
+        run: |
+          ./tool/ci.sh
+
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v1.0.2
-        if: success()
+        uses: codecov/codecov-action@v1
         with:
-          token: ${{secrets.CODECOV_TOKEN}}
+          token: ${{ secrets.CODECOV_TOKEN }}
           file: coverage/lcov.info
-      #      - name: Build Android app
-      #        run: flutter build apk
-      - name: Semver Release
-        uses: K-Phoen/semver-release-action@v1.0.3
-        if: success() && github.event_name == 'pull_request'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          release_branch: master
+  #
+  # Build mobile apps.
+  # build:
+  #   runs-on: ${{ matrix.os }}
+  #   needs: analyze-and-test
+  ##
+  #   strategy:
+  #     matrix:
+  #       os: [ubuntu-latest]
+  #     fail-fast: false
+  ##
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Cache Flutter
+  #       id: cache-flutter
+  #       uses: actions/cache@v1
+  #       with:
+  #         path: /opt/hostedtoolcache/flutter
+  #         key: ${{ runner.os }}-flutter
+  #     - uses: subosito/flutter-action@v1
+  #       with:
+  #         channel: 'stable'
+  #     - name: Build Android
+  #       run: |
+  #         ./tool/build.sh apk
+  #     - name: Build iOS
+  #       if: ${{ runner.os }} == 'macOS'
+  #       run: |
+  #         ./tool/build.sh ios
