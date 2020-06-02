@@ -1,0 +1,11 @@
+{
+  "roomId": "roomId test",
+  "creatorUid": "creatorUid test",
+  "creatorReady": true,
+  "joinedUid": "joinedUid test",
+  "joinedReady": true,
+  "workerUid": "workerUi test",
+  "chapterUid": "chapterUid test",
+  "missionUid": "missionUid test",
+  "gameUid": "gameUid test"
+}

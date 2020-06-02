@@ -4,7 +4,7 @@ on: [push]
 
 env:
   flutter_channel: 'stable'
-  flutter_version: '1.12.13+hotfix.9'
+  flutter_version: '1.17.1'
 
 jobs:
   # Analyze and test each package.

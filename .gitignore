@@ -13,6 +13,11 @@ ios/Runner/GoogleService-Info.plist
 !.vscode/extensions.json
 
 ### Dart ###
+
+# Ignore generated files
+*.g.dart
+*.freezed.dart
+
 # See https://www.dartlang.org/guides/libraries/private-files
 
 # Files and directories created by pub

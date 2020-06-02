@@ -10,7 +10,8 @@
 This game is created as part of my [Bachelor's Thesis](https://github.com/tenhobi/bachelors-thesis) in the Czech language.
 Due to that, I will not accept any PRs for now.
 
-It uses [Flutter](https://flutter.dev) framework by Google, [Cloud Firestore](https://firebase.google.com/products/firestore/) for communication and [Rive](https://rive.app) for some special effects.
+It uses [Flutter](https://flutter.dev) framework by Google
+and [Cloud Firestore](https://firebase.google.com/products/firestore/) for communication.
 
 The code follows the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
@@ -38,6 +39,11 @@ Also, before building the app, make sure to:
 Run the app using the `flutter run` command.
 
 To learn more, read about building and releasing [an Android app](https://flutter.dev/docs/deployment/android) or [an iOS app](https://flutter.dev/docs/deployment/ios).
+
+### Build
+
+To build an Android apk, run `flutter build apk`.
+To create docs, run `dartdoc --exclude 'dart:async,dart:collection,dart:convert,dart:core,dart:developer,dart:io,dart:isolate,dart:math,dart:typed_data,dart,dart:ffi,dart:html,dart:js,dart:ui,dart:js_util'`.
 
 ## 🔨 Tools
 

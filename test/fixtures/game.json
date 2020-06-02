@@ -1,0 +1,13 @@
+{
+  "endTime": 1,
+  "time": 2,
+  "errors": 3,
+  "finished": true,
+  "modulesLeft": 4,
+  "chapterUid": "chapterUid test",
+  "missionUid": "missionUid test",
+  "missionName": "missionName test",
+  "workerUid": "workerUid test",
+  "manualUid": "manualUid test",
+  "boom": false
+}
